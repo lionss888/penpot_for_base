@@ -9,6 +9,8 @@
    [app.common.data :as d]
    [app.common.geom.shapes :as gsh]
    [app.common.geom.shapes.text :as gst]
+   [app.common.pages.helpers :as cph]
+   [app.main.refs :as refs]
    [app.main.ui.context :as muc]
    [cuerdas.core :as str]
    [rumext.alpha :as mf]))
@@ -47,19 +49,32 @@
   (mf/fnc mask-shape
     {::mf/wrap-props false}
     [props]
-    (let [mask      (unchecked-get props "mask")
+    (let [scroll (mf/use-ctx muc/scroll-ctx)
+          local (mf/deref refs/viewer-local)
+          zoom (:zoom local)
+          mask      (unchecked-get props "mask")
+          objects   (unchecked-get props "objects")
           render-id (mf/use-ctx muc/render-ctx)
           svg-text? (and (= :text (:type mask)) (some? (:position-data mask)))
 
           mask      (cond-> mask svg-text? set-white-fill)
+          parents (map (d/getf objects) (cph/get-parent-ids objects (:id mask)))
+          fixed? (or (:fixed-scroll mask) (some #(:fixed-scroll %) parents))
 
           mask-bb
           (cond
             svg-text?
-            (gst/position-data-points mask)
+            (-> (gsh/transform-shape mask)
+                (cond->
+                 fixed?
+                  (gsh/move {:x (/ (:scroll-left scroll) zoom) :y (/ (:scroll-top scroll) zoom)}))
+                (gst/position-data-points ))
 
             :else
             (-> (gsh/transform-shape mask)
+                (cond->
+                 fixed?
+                  (gsh/move {:x (/ (:scroll-left scroll) zoom) :y (/ (:scroll-top scroll) zoom)}))
                 (:points)))]
       [:*
        [:g {:opacity 0}

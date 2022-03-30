@@ -7,12 +7,14 @@
 (ns app.main.ui.viewer.shapes
   "The main container for a frame in viewer mode"
   (:require
+   [app.common.data :as d]
    [app.common.geom.shapes :as geom]
    [app.common.pages.helpers :as cph]
    [app.common.spec.interactions :as cti]
    [app.main.data.viewer :as dv]
    [app.main.refs :as refs]
    [app.main.store :as st]
+   [app.main.ui.context :as ctx]
    [app.main.ui.shapes.bool :as bool]
    [app.main.ui.shapes.circle :as circle]
    [app.main.ui.shapes.frame :as frame]
@@ -241,7 +243,8 @@
          [:& component {:shape shape
                         :frame frame
                         :childs childs
-                        :is-child-selected? true}]
+                        :is-child-selected? true
+                        :objects objects}]
 
          [:& interaction {:shape shape
                           :interactions interactions
@@ -250,7 +253,8 @@
         ;; Don't wrap svg elements inside a <g> otherwise some can break
         [:& component {:shape shape
                        :frame frame
-                       :childs childs}]))))
+                       :childs childs
+                       :objects objects}]))))
 
 (defn frame-wrapper
   [shape-container]
@@ -313,7 +317,15 @@
     (mf/fnc group-container
       {::mf/wrap-props false}
       [props]
-      (let [shape  (unchecked-get props "shape")
+      (let [scroll (mf/use-ctx ctx/scroll-ctx)
+            local (mf/deref refs/viewer-local)
+            zoom (:zoom local)
+            shape  (unchecked-get props "shape")
+            parents (map (d/getf objects) (cph/get-parent-ids objects (:id shape)))
+            fixed? (or (:fixed-scroll shape) (some #(:fixed-scroll %) parents))
+            shape  (cond-> shape
+                     fixed?
+                     (geom/move {:x (/ (:scroll-left scroll) zoom) :y (/ (:scroll-top scroll) zoom)}))
             childs (mapv #(get objects %) (:shapes shape))
             props  (obj/merge! #js {} props
                                #js {:childs childs
@@ -327,7 +339,15 @@
     (mf/fnc bool-container
       {::mf/wrap-props false}
       [props]
-      (let [shape  (unchecked-get props "shape")
+      (let [scroll (mf/use-ctx ctx/scroll-ctx)
+            local (mf/deref refs/viewer-local)
+            zoom (:zoom local)
+            shape  (unchecked-get props "shape")
+            parents (map (d/getf objects) (cph/get-parent-ids objects (:id shape)))
+            fixed? (or (:fixed-scroll shape) (some #(:fixed-scroll %) parents))
+            shape  (cond-> shape
+                     fixed?
+                     (geom/move {:x (/ (:scroll-left scroll) zoom) :y (/ (:scroll-top scroll) zoom)}))
             childs (->> (cph/get-children-ids objects (:id shape))
                         (select-keys objects))
             props  (obj/merge! #js {} props
@@ -342,7 +362,15 @@
     (mf/fnc svg-raw-container
       {::mf/wrap-props false}
       [props]
-      (let [shape  (unchecked-get props "shape")
+      (let [scroll (mf/use-ctx ctx/scroll-ctx)
+            local (mf/deref refs/viewer-local)
+            zoom (:zoom local)
+            shape  (unchecked-get props "shape")
+            parents (map (d/getf objects) (cph/get-parent-ids objects (:id shape)))
+            fixed? (or (:fixed-scroll shape) (some #(:fixed-scroll %) parents))
+            shape  (cond-> shape
+                     fixed?
+                     (geom/move {:x (/ (:scroll-left scroll) zoom) :y (/ (:scroll-top scroll) zoom)}))
             childs (mapv #(get objects %) (:shapes shape))
             props  (obj/merge! #js {} props
                                #js {:childs childs
@@ -371,10 +399,19 @@
             (mf/use-memo (mf/deps objects)
                          #(svg-raw-container-factory objects))
             shape (unchecked-get props "shape")
-            frame (unchecked-get props "frame")]
+            parents (map (d/getf objects) (cph/get-parent-ids objects (:id shape)))
+            fixed? (or (:fixed-scroll shape) (some #(:fixed-scroll %) parents))
+            frame (unchecked-get props "frame")
+            scroll (mf/use-ctx ctx/scroll-ctx)
+            local (mf/deref refs/viewer-local)
+            zoom (:zoom local)]
         (when (and shape (not (:hidden shape)))
           (let [shape (-> (geom/transform-shape shape)
-                          (geom/translate-to-frame frame))
+                          (geom/translate-to-frame frame)
+                          (cond->
+                            fixed?
+                            (geom/move {:x (/ (:scroll-left scroll) zoom) :y (/ (:scroll-top scroll) zoom)})))
+
                 opts #js {:shape shape
                           :objects objects}]
             (case (:type shape)

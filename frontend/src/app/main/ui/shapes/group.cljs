@@ -20,6 +20,7 @@
       [props]
       (let [shape          (unchecked-get props "shape")
             childs         (unchecked-get props "childs")
+            objects        (unchecked-get props "objects")
             render-id      (mf/use-ctx muc/render-ctx)
             masked-group?  (:masked-group? shape)
 
@@ -46,7 +47,8 @@
         [:> clip-wrapper clip-props
          [:> mask-wrapper mask-props
           (when masked-group?
-            [:> render-mask #js {:mask mask}])
+            [:> render-mask #js {:mask mask
+                                 :objects objects}])
 
           (for [item childs]
             [:& shape-wrapper {:shape item
