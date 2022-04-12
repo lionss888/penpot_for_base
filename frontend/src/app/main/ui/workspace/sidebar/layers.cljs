@@ -7,6 +7,7 @@
 (ns app.main.ui.workspace.sidebar.layers
   (:require
    [app.common.data :as d]
+   [app.common.data.macros :as dm]
    [app.common.pages.helpers :as cph]
    [app.common.uuid :as uuid]
    [app.main.data.workspace :as dw]
@@ -274,21 +275,21 @@
                :key id}])))]]))
 
 (defn- strip-obj-data [obj]
-  (select-keys obj [:id
-                    :name
-                    :blocked
-                    :hidden
-                    :shapes
-                    :type
-                    :content
-                    :parent-id
-                    :component-id
-                    :component-file
-                    :shape-ref
-                    :touched
-                    :metadata
-                    :masked-group?
-                    :bool-type]))
+  (dm/select-keys obj [:id
+                       :name
+                       :blocked
+                       :hidden
+                       :shapes
+                       :type
+                       :content
+                       :parent-id
+                       :component-id
+                       :component-file
+                       :shape-ref
+                       :touched
+                       :metadata
+                       :masked-group?
+                       :bool-type]))
 
 (defn- strip-objects
   "Remove unnecesary data from objects map"
