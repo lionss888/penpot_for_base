@@ -1,0 +1,41 @@
+openapi: 3.0.3
+info:
+  title: База API
+  description: REST API для продукта База
+  version: 1.0.0
+
+servers:
+  - url: /api/baza/v1
+    description: API Gateway
+
+paths:
+  /:
+    get:
+      summary: Информация об API
+      responses:
+        "200":
+          description: Метаданные API
+
+  /health:
+    get:
+      summary: Health check
+      tags: [System]
+      responses:
+        "200":
+          description: Сервис доступен
+
+  /projects:
+    get:
+      summary: Список проектов
+      tags: [Projects]
+      responses:
+        "200":
+          description: Список проектов
+
+  /files:
+    get:
+      summary: Список файлов
+      tags: [Files]
+      responses:
+        "200":
+          description: Список файлов

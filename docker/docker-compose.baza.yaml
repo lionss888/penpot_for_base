@@ -1,0 +1,151 @@
+# База — Docker Compose
+# Оболочка с нейтральными именами сервисов (baza-*)
+# Проект: docker compose -p baza -f docker-compose.baza.yaml up -d
+
+x-flags: &baza-flags
+  PENPOT_FLAGS: disable-email-verification enable-smtp enable-prepl-server disable-secure-session-cookies
+
+x-uri: &baza-public-uri
+  PENPOT_PUBLIC_URI: ${BAZA_PUBLIC_URI:-http://localhost:9001}
+
+x-body-size: &baza-http-body-size
+  PENPOT_HTTP_SERVER_MAX_BODY_SIZE: 31457280
+  PENPOT_HTTP_SERVER_MAX_MULTIPART_BODY_SIZE: 367001600
+
+x-secret-key: &baza-secret-key
+  PENPOT_SECRET_KEY: ${BAZA_SECRET_KEY:-change-this-insecure-key}
+
+networks:
+  baza:
+
+volumes:
+  baza_postgres_v15:
+  baza_assets:
+
+services:
+  baza-frontend:
+    image: "penpotapp/frontend:${BAZA_VERSION:-latest}"
+    container_name: baza-frontend
+    restart: always
+    ports:
+      - "9001:8080"
+    volumes:
+      - baza_assets:/opt/data/assets
+      # Volume-mount для кастомных assets (раскомментировать при наличии путей в образе):
+      # - ../assets/logo.svg:/opt/penpot/frontend/static/logo.svg:ro
+      # - ../assets/favicon.ico:/opt/penpot/frontend/static/favicon.ico:ro
+    depends_on:
+      - baza-backend
+      - baza-exporter
+    networks:
+      - baza
+    environment:
+      << : [*baza-flags, *baza-http-body-size]
+
+  baza-backend:
+    image: "penpotapp/backend:${BAZA_VERSION:-latest}"
+    container_name: baza-backend
+    restart: always
+    volumes:
+      - baza_assets:/opt/data/assets
+    depends_on:
+      baza-db:
+        condition: service_healthy
+      baza-cache:
+        condition: service_healthy
+    networks:
+      - baza
+    environment:
+      << : [*baza-flags, *baza-public-uri, *baza-http-body-size, *baza-secret-key]
+      PENPOT_DATABASE_URI: postgresql://baza-db/penpot
+      PENPOT_DATABASE_USERNAME: penpot
+      PENPOT_DATABASE_PASSWORD: ${BAZA_DB_PASSWORD:-penpot}
+      PENPOT_REDIS_URI: redis://baza-cache/0
+      PENPOT_OBJECTS_STORAGE_BACKEND: fs
+      PENPOT_OBJECTS_STORAGE_FS_DIRECTORY: /opt/data/assets
+      PENPOT_TELEMETRY_ENABLED: "false"
+      PENPOT_SMTP_DEFAULT_FROM: ${BAZA_SMTP_FROM:-no-reply@example.com}
+      PENPOT_SMTP_DEFAULT_REPLY_TO: ${BAZA_SMTP_REPLY_TO:-no-reply@example.com}
+      PENPOT_SMTP_HOST: baza-mailcatch
+      PENPOT_SMTP_PORT: "1025"
+      PENPOT_SMTP_USERNAME: ""
+      PENPOT_SMTP_PASSWORD: ""
+      PENPOT_SMTP_TLS: "false"
+      PENPOT_SMTP_SSL: "false"
+
+  baza-exporter:
+    image: "penpotapp/exporter:${BAZA_VERSION:-latest}"
+    container_name: baza-exporter
+    restart: always
+    depends_on:
+      baza-cache:
+        condition: service_healthy
+    networks:
+      - baza
+    environment:
+      << : [*baza-secret-key]
+      PENPOT_PUBLIC_URI: http://baza-frontend:8080
+      PENPOT_REDIS_URI: redis://baza-cache/0
+
+  baza-api:
+    build:
+      context: ../baza-api
+      dockerfile: Dockerfile
+    container_name: baza-api
+    restart: always
+    ports:
+      - "9002:3000"
+    environment:
+      BAZA_BACKEND_URL: http://baza-frontend:8080
+      BAZA_PUBLIC_URI: ${BAZA_PUBLIC_URI:-http://localhost:9001}
+    depends_on:
+      - baza-backend
+    networks:
+      - baza
+
+  baza-db:
+    image: postgres:15
+    container_name: baza-db
+    restart: always
+    stop_signal: SIGINT
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U penpot"]
+      interval: 2s
+      timeout: 10s
+      retries: 5
+      start_period: 2s
+    volumes:
+      - baza_postgres_v15:/var/lib/postgresql/data
+    networks:
+      - baza
+    environment:
+      POSTGRES_INITDB_ARGS: --data-checksums
+      POSTGRES_DB: penpot
+      POSTGRES_USER: penpot
+      POSTGRES_PASSWORD: ${BAZA_DB_PASSWORD:-penpot}
+
+  baza-cache:
+    image: valkey/valkey:8.1
+    container_name: baza-cache
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "valkey-cli ping | grep PONG"]
+      interval: 1s
+      timeout: 3s
+      retries: 5
+      start_period: 3s
+    networks:
+      - baza
+    environment:
+      VALKEY_EXTRA_FLAGS: --maxmemory 128mb --maxmemory-policy volatile-lfu
+
+  baza-mailcatch:
+    image: sj26/mailcatcher:latest
+    container_name: baza-mailcatch
+    restart: always
+    expose:
+      - "1025"
+    ports:
+      - "1080:1080"
+    networks:
+      - baza
