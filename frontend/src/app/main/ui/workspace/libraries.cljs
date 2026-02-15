@@ -386,7 +386,7 @@
                (tr "workspace.libraries.empty.no-libraries")
                [:a {:target "_blank"
                     :class (stl/css :sample-libraries-link)
-                    :href "https://penpot.app/libraries-templates"}
+                    :href "#"}
                 (tr "workspace.libraries.empty.some-templates")]]
               [:div {:class (stl/css :sample-libraries-container)}
                (tr "workspace.libraries.empty.add-some")

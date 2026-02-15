@@ -22,7 +22,7 @@ msgstr "Проверьте свою электронную почту"
 #: src/app/main/ui/auth/register.cljs:277
 #, unused
 msgid "auth.check-your-email"
-msgstr "Перейдите по ссылке в электронном письме, чтобы начать работу с Penpot."
+msgstr "Перейдите по ссылке в электронном письме, чтобы начать работу с База."
 
 #: src/app/main/ui/auth/recovery.cljs:67
 msgid "auth.confirm-password"
@@ -67,7 +67,7 @@ msgstr "Вход"
 #: src/app/main/ui/auth/login.cljs:274
 msgid "auth.login-tagline"
 msgstr ""
-"Penpot — это бесплатный инструмент для дизайна с открытым исходным кодом, "
+"База — это бесплатный инструмент для дизайна с открытым исходным кодом, "
 "созданный для совместной работы с дизайном и кодом"
 
 #: src/app/main/ui/auth/login.cljs:231
@@ -160,7 +160,7 @@ msgstr "Создать аккаунт"
 #, unused
 msgid "auth.register-tagline"
 msgstr ""
-"С бесплатным аккаунтом Penpot можно создавать неограниченное количество "
+"С бесплатным аккаунтом База можно создавать неограниченное количество "
 "команд и сотрудничать с другими дизайнерами и разработчиками над любым "
 "количеством проектов. "
 
@@ -219,7 +219,7 @@ msgstr "Опубликовать"
 
 #: src/app/main/ui/viewer/share_link.cljs:304, src/app/main/ui/viewer/share_link.cljs:315
 msgid "common.share-link.all-users"
-msgstr "Все пользователи Penpot"
+msgstr "Все пользователи База"
 
 #: src/app/main/ui/viewer/share_link.cljs:204
 msgid "common.share-link.confirm-deletion-link-description"
@@ -296,7 +296,7 @@ msgstr "Управление командой"
 #: src/app/main/ui/dashboard/projects.cljs:92
 msgid "dasboard.team-hero.text"
 msgstr ""
-"Penpot предназначен для команд. Приглашайте участников к совместной работе "
+"База предназначен для команд. Приглашайте участников к совместной работе "
 "над проектами и файлами"
 
 #: src/app/main/ui/dashboard/projects.cljs:90
@@ -306,7 +306,7 @@ msgstr "Объединяйтесь!"
 #: src/app/main/ui/dashboard/projects.cljs
 #, unused
 msgid "dasboard.tutorial-hero.info"
-msgstr "Изучите основы в Penpot весело с этим практическим руководством."
+msgstr "Изучите основы в База весело с этим практическим руководством."
 
 #: src/app/main/ui/dashboard/projects.cljs
 #, unused
@@ -321,7 +321,7 @@ msgstr "Практическое руководство"
 #: src/app/main/ui/dashboard/projects.cljs
 #, unused
 msgid "dasboard.walkthrough-hero.info"
-msgstr "Прогуляйтесь по возможностям Penpot и познакомьтесь с основными функциями."
+msgstr "Прогуляйтесь по возможностям База и познакомьтесь с основными функциями."
 
 #: src/app/main/ui/dashboard/projects.cljs
 #, unused
@@ -394,7 +394,7 @@ msgid "dashboard.access-tokens.personal.description"
 msgstr ""
 "Личные токены доступа функционируют как альтернатива нашей системе "
 "аутентификации по логину/паролю и могут использоваться для предоставления "
-"приложению доступа к внутреннему API Penpot"
+"приложению доступа к внутреннему API База"
 
 #: src/app/main/ui/settings/access_tokens.cljs:142
 msgid "dashboard.access-tokens.token-will-expire"
@@ -430,7 +430,7 @@ msgstr "Закрепить эту версию"
 
 #: src/app/main/ui/components/context_menu_a11y.cljs:300, src/app/main/ui/dashboard/sidebar.cljs:549
 msgid "dashboard.default-team-name"
-msgstr "Ваш Penpot"
+msgstr "Ваш База"
 
 #: src/app/main/ui/dashboard/sidebar.cljs:477
 msgid "dashboard.delete-team"
@@ -438,7 +438,7 @@ msgstr "Удалить команду"
 
 #: src/app/main/ui/dashboard/file_menu.cljs:330, src/app/main/ui/workspace/main_menu.cljs:690
 msgid "dashboard.download-binary-file"
-msgstr "Скачать файл Penpot (.penpot)"
+msgstr "Скачать файл База (.penpot)"
 
 #: src/app/main/ui/dashboard/file_menu.cljs:321, src/app/main/ui/workspace/main_menu.cljs:712
 #, unused
@@ -519,7 +519,7 @@ msgstr "Начать создавать удивительные вещи"
 
 #: src/app/main/ui/dashboard/file_menu.cljs:282
 msgid "dashboard.export-binary-multi"
-msgstr "Скачать файлы Penpot (.penpot) (%s)"
+msgstr "Скачать файлы База (.penpot) (%s)"
 
 #: src/app/main/ui/workspace/main_menu.cljs:698
 msgid "dashboard.export-frames"
@@ -531,7 +531,7 @@ msgstr "Экспорт в формате PDF"
 
 #, unused
 msgid "dashboard.export-multi"
-msgstr "Экспорт файлов Penpot (%s)"
+msgstr "Экспорт файлов База (%s)"
 
 #: src/app/main/ui/exports/assets.cljs:108
 msgid "dashboard.export-multiple.selected"
@@ -549,7 +549,7 @@ msgstr ""
 
 #: src/app/main/ui/exports/assets.cljs:183
 msgid "dashboard.export-shapes.how-to-link"
-msgstr "Информация о настройке экспорта в Penpot."
+msgstr "Информация о настройке экспорта в База."
 
 #: src/app/main/ui/exports/assets.cljs:178
 msgid "dashboard.export-shapes.no-elements"
@@ -614,8 +614,8 @@ msgstr ""
 msgid "dashboard.fonts.hero-text2"
 msgstr ""
 "Вам следует загружать только собственные шрифты, или у которых есть "
-"лицензия на использование в Penpot. Больше информации в разделе \"Content "
-"rights\" в [Условиях использования Penpot](https://penpot.app/terms.html). "
+"лицензия на использование в База. Больше информации в разделе \"Content "
+"rights\" в [Условиях использования База](https://penpot.app/terms.html). "
 "Также можете прочитать о [лицензировании "
 "шрифтов](https://www.typography.com/faq)."
 
@@ -636,7 +636,7 @@ msgstr ""
 
 #: src/app/main/ui/dashboard/import.cljs:464, src/app/main/ui/dashboard/project_menu.cljs:109
 msgid "dashboard.import"
-msgstr "Импорт файлов Penpot"
+msgstr "Импорт файлов База"
 
 #: src/app/main/ui/dashboard/import.cljs:293, src/app/worker/import.cljs:121, src/app/worker/import.cljs:124
 msgid "dashboard.import.analyze-error"
@@ -927,11 +927,11 @@ msgstr "Выберите тему"
 
 #: src/app/main/ui/settings/options.cljs:68
 msgid "dashboard.select-ui-theme.dark"
-msgstr "Темный Penpot (по умолчанию)"
+msgstr "Темный База (по умолчанию)"
 
 #: src/app/main/ui/settings/options.cljs:69
 msgid "dashboard.select-ui-theme.light"
-msgstr "Светлый Penpot"
+msgstr "Светлый База"
 
 #: src/app/main/ui/settings/options.cljs:70
 msgid "dashboard.select-ui-theme.system"
@@ -1079,7 +1079,7 @@ msgstr "Безграничное творчество"
 
 #: src/app/main/ui/dashboard/sidebar.cljs:975
 msgid "dashboard.upgrade-plan.penpot-free"
-msgstr "Penpot Бесплатный"
+msgstr "База Бесплатный"
 
 #: src/app/main/ui/dashboard/team.cljs:1115
 msgid "dashboard.webhooks.active"
@@ -1109,7 +1109,7 @@ msgstr "Вебхук успешно создан."
 msgid "dashboard.webhooks.description"
 msgstr ""
 "Вебхуки - это простой способ уведомлять другие веб-сайты и приложения о тех "
-"или иных событиях в Penpot. Мы отправим POST-запрос на каждый из указанных "
+"или иных событиях в База. Мы отправим POST-запрос на каждый из указанных "
 "вами URL-адресов."
 
 #: src/app/main/ui/dashboard/team.cljs:1265
@@ -1138,7 +1138,7 @@ msgstr "Ваше имя"
 
 #: src/app/main/ui/dashboard/file_menu.cljs:40, src/app/main/ui/dashboard/fonts.cljs:42, src/app/main/ui/dashboard/libraries.cljs:56, src/app/main/ui/dashboard/projects.cljs:355, src/app/main/ui/dashboard/search.cljs:48, src/app/main/ui/dashboard/sidebar.cljs:302, src/app/main/ui/dashboard/team.cljs:537, src/app/main/ui/dashboard/team.cljs:983, src/app/main/ui/dashboard/team.cljs:1251, src/app/main/ui/dashboard/team.cljs:1298
 msgid "dashboard.your-penpot"
-msgstr "Ваш Penpot"
+msgstr "Ваш База"
 
 #: src/app/main/ui/alert.cljs:35
 msgid "ds.alert-ok"
@@ -1229,12 +1229,12 @@ msgstr "В комментарии произошла ошибка"
 #: src/app/main/errors.cljs:307
 msgid "errors.deprecated"
 msgstr ""
-"Извините! Это старый файл, использующий устаревший тип ресурсов Penpot, и "
+"Извините! Это старый файл, использующий устаревший тип ресурсов База, и "
 "вы не можете его открыть."
 
 #: src/app/main/errors.cljs:308
 msgid "errors.deprecated.contact.before"
-msgstr "Хоть Penpot больше не поддерживает этот тип Ресурсов, вы можете"
+msgstr "Хоть База больше не поддерживает этот тип Ресурсов, вы можете"
 
 #: src/app/main/errors.cljs:309
 msgid "errors.deprecated.contact.text"
@@ -1529,7 +1529,7 @@ msgstr ""
 
 #: src/app/main/ui/settings/feedback.cljs:149
 msgid "feedback.discourse-title"
-msgstr "Сообщество Penpot"
+msgstr "Сообщество База"
 
 #: src/app/main/ui/settings/feedback.cljs:143
 msgid "feedback.other-ways-contact"
@@ -1814,7 +1814,7 @@ msgstr "Варианты свойств"
 msgid "inspect.empty.help"
 msgstr ""
 "Если вы хотите узнать больше о осмотре дизайна, посетите справочный центр "
-"Penpot"
+"База"
 
 #: src/app/main/ui/inspect/right_sidebar.cljs:232
 msgid "inspect.empty.select"
@@ -1923,7 +1923,7 @@ msgstr "Сочетания клавиш"
 
 #: src/app/main/ui/dashboard/sidebar.cljs:1044
 msgid "labels.about-penpot"
-msgstr "О Penpot"
+msgstr "О База"
 
 #: src/app/main/data/common.cljs:90, src/app/main/ui/dashboard/import.cljs:530
 msgid "labels.accept"
@@ -2040,7 +2040,7 @@ msgstr "Продолжить с"
 
 #: src/app/main/ui/viewer/login.cljs:69
 msgid "labels.continue-with-penpot"
-msgstr "Вы можете продолжить с аккаунтом Penpot"
+msgstr "Вы можете продолжить с аккаунтом База"
 
 #: src/app/main/ui/components/copy_button.cljs:41
 msgid "labels.copy"
@@ -2370,7 +2370,7 @@ msgstr "Ожидание"
 
 #: src/app/main/ui/dashboard/sidebar.cljs:879
 msgid "labels.penpot-changelog"
-msgstr "Журнал изменений Penpot"
+msgstr "Журнал изменений База"
 
 #: src/app/main/ui/dashboard/sidebar.cljs:752
 msgid "labels.pinned-projects"
@@ -3142,13 +3142,13 @@ msgstr "Письмо с подтверждением отправлено на %
 msgid "onboarding-v2.before-start.desc1"
 msgstr ""
 "Вы должны знать, что существует множество ресурсов, которые помогут вам "
-"начать работу с Penpot, например, руководство пользователя и наш канал на "
+"начать работу с База, например, руководство пользователя и наш канал на "
 "Youtube."
 
 #, unused
 msgid "onboarding-v2.before-start.desc2"
 msgstr ""
-"Подробная информация о том, как пользоваться Penpot. От создания прототипов "
+"Подробная информация о том, как пользоваться База. От создания прототипов "
 "до организации или обмена проектами."
 
 #, unused
@@ -3172,12 +3172,12 @@ msgstr "Прежде чем начать"
 #: src/app/main/ui/onboarding/newsletter.cljs:68
 msgid "onboarding-v2.newsletter.desc"
 msgstr ""
-"Подпишитесь на рассылку Penpot, чтобы всегда быть в курсе развития продукта "
+"Подпишитесь на рассылку База, чтобы всегда быть в курсе развития продукта "
 "и новостей."
 
 #: src/app/main/ui/onboarding/newsletter.cljs:88
 msgid "onboarding-v2.newsletter.news"
-msgstr "Присылайте мне новости о Penpot (записи в блоге, видеоуроки, стримы...)."
+msgstr "Присылайте мне новости о База (записи в блоге, видеоуроки, стримы...)."
 
 #: src/app/main/ui/onboarding/newsletter.cljs:96
 msgid "onboarding-v2.newsletter.privacy1"
@@ -3197,15 +3197,15 @@ msgstr "Присылать мне обновления продукта (нов�
 #, unused
 msgid "onboarding-v2.welcome.desc1"
 msgstr ""
-"Penpot — проект с открытым исходным кодом, созданный Kaleidos и "
+"База — проект с открытым исходным кодом, созданный Kaleidos и "
 "сообществом, где многие люди уже помогают друг другу. Каждый может начать "
 "сотрудничество:"
 
 #, unused
 msgid "onboarding-v2.welcome.desc2"
 msgstr ""
-"Общественное пространство, где можно узнавать, делиться и обсуждать Penpot, "
-"его настоящее и будущее со всем сообществом и основной командой Penpot."
+"Общественное пространство, где можно узнавать, делиться и обсуждать База, "
+"его настоящее и будущее со всем сообществом и основной командой База."
 
 #, unused
 msgid "onboarding-v2.welcome.desc2.title"
@@ -3223,7 +3223,7 @@ msgstr "Руководство по участию в проекте"
 
 #: src/app/main/ui/onboarding/team_choice.cljs:241
 msgid "onboarding-v2.welcome.title"
-msgstr "Добро пожаловать в Penpot!"
+msgstr "Добро пожаловать в База!"
 
 #: src/app/main/ui/onboarding/team_choice.cljs:254
 #, unused
@@ -3302,7 +3302,7 @@ msgstr "Политика конфиденциальности."
 
 #: src/app/main/ui/onboarding/newsletter.cljs:65
 msgid "onboarding.newsletter.title"
-msgstr "Хотите получать новости Penpot?"
+msgstr "Хотите получать новости База?"
 
 #: src/app/main/ui/onboarding/questions.cljs:108
 msgid "onboarding.questions.lets-get-started"
@@ -3318,7 +3318,7 @@ msgstr "Просто исследую"
 
 #: src/app/main/ui/onboarding/questions.cljs:246
 msgid "onboarding.questions.reasons.fit"
-msgstr "Анализ того, подходит ли Penpot для моей команды"
+msgstr "Анализ того, подходит ли База для моей команды"
 
 #: src/app/main/ui/onboarding/questions.cljs:252
 msgid "onboarding.questions.reasons.testing"
@@ -3346,16 +3346,16 @@ msgstr "Вайрфрейминг"
 
 #: src/app/main/ui/onboarding/questions.cljs:116
 msgid "onboarding.questions.step1.question1"
-msgstr "В каких целях вы планируете использовать Penpot?"
+msgstr "В каких целях вы планируете использовать База?"
 
 #: src/app/main/ui/onboarding/questions.cljs:273
 msgid "onboarding.questions.step1.question2"
-msgstr "Что привело вас сегодня в Penpot?"
+msgstr "Что привело вас сегодня в База?"
 
 #: src/app/main/ui/onboarding/questions.cljs:112
 msgid "onboarding.questions.step1.subtitle"
 msgstr ""
-"Расскажите нам немного о себе, чтобы мы могли заставить Penpot работать на "
+"Расскажите нам немного о себе, чтобы мы могли заставить База работать на "
 "вас. Ваши ответы помогут нам определить приоритетность новых функций и "
 "укажут вам правильное направление для начала работы."
 
@@ -3391,7 +3391,7 @@ msgstr "С чего бы вы хотели начать?"
 #: src/app/main/ui/onboarding/questions.cljs:428
 #, unused
 msgid "onboarding.questions.step5.title"
-msgstr "Как вы узнали о Penpot?"
+msgstr "Как вы узнали о База?"
 
 #: src/app/main/ui/onboarding/questions.cljs:233
 msgid "onboarding.questions.team-size.11-30"
@@ -3436,7 +3436,7 @@ msgstr "Создать команду"
 #: src/app/main/ui/onboarding/team_choice.cljs:31
 msgid "onboarding.team-modal.create-team-desc"
 msgstr ""
-"Команда позволяет вам сотрудничать с другими пользователями Penpot, "
+"Команда позволяет вам сотрудничать с другими пользователями База, "
 "работающими над одними файлами и проектами."
 
 #: src/app/main/ui/onboarding/team_choice.cljs:36
@@ -3473,7 +3473,7 @@ msgstr "Заняться дизайном"
 
 #, unused
 msgid "onboarding.welcome.alt"
-msgstr "Penpot"
+msgstr "База"
 
 #: src/app/main/ui/auth/recovery.cljs:88
 msgid "profile.recovery.go-to-login"
@@ -4177,7 +4177,7 @@ msgstr "Оплата после пробного периода. Кредитн�
 
 #: src/app/main/ui/settings/subscription.cljs:533
 msgid "subscription.settings.member-since"
-msgstr "Участник Penpot с: %s"
+msgstr "Участник База с: %s"
 
 #: src/app/main/ui/settings/subscription.cljs:50
 msgid "subscription.settings.recommended"
@@ -4214,31 +4214,31 @@ msgstr "Если вы хотите увеличить этот лимит, [об
 
 #: src/app/main/ui/dashboard/files.cljs:181
 msgid "title.dashboard.files"
-msgstr "%s - Penpot"
+msgstr "%s - База"
 
 #: src/app/main/ui/dashboard/fonts.cljs:46
 msgid "title.dashboard.font-providers"
-msgstr "Поставщики шрифтов - %s - Penpot"
+msgstr "Поставщики шрифтов - %s - База"
 
 #: src/app/main/ui/dashboard/fonts.cljs:45
 msgid "title.dashboard.fonts"
-msgstr "Шрифты - %s - Penpot"
+msgstr "Шрифты - %s - База"
 
 #: src/app/main/ui/dashboard/projects.cljs:357
 msgid "title.dashboard.projects"
-msgstr "Проекты - %s - Penpot"
+msgstr "Проекты - %s - База"
 
 #: src/app/main/ui/dashboard/search.cljs:50
 msgid "title.dashboard.search"
-msgstr "Поиск - %s - Penpot"
+msgstr "Поиск - %s - База"
 
 #: src/app/main/ui/dashboard/libraries.cljs:58
 msgid "title.dashboard.shared-libraries"
-msgstr "Общие библиотеки - %s - Penpot"
+msgstr "Общие библиотеки - %s - База"
 
 #: src/app/main/ui/auth/verify_token.cljs:70, src/app/main/ui/auth.cljs:34
 msgid "title.default"
-msgstr "Penpot — свобода в дизайне для команд"
+msgstr "База — свобода в дизайне для команд"
 
 #: src/app/main/ui/settings/access_tokens.cljs:278
 msgid "title.settings.access-tokens"
@@ -4246,47 +4246,47 @@ msgstr "Профиль - токены доступа"
 
 #: src/app/main/ui/settings/feedback.cljs:161
 msgid "title.settings.feedback"
-msgstr "Оставить отзыв - Penpot"
+msgstr "Оставить отзыв - База"
 
 #: src/app/main/ui/settings/notifications.cljs:45
 msgid "title.settings.notifications"
-msgstr "Уведомления - Penpot"
+msgstr "Уведомления - База"
 
 #: src/app/main/ui/settings/options.cljs:83
 msgid "title.settings.options"
-msgstr "Настройки - Penpot"
+msgstr "Настройки - База"
 
 #: src/app/main/ui/settings/password.cljs:105
 msgid "title.settings.password"
-msgstr "Пароль - Penpot"
+msgstr "Пароль - База"
 
 #: src/app/main/ui/settings/profile.cljs:124
 msgid "title.settings.profile"
-msgstr "Профиль - Penpot"
+msgstr "Профиль - База"
 
 #: src/app/main/ui/dashboard/team.cljs:981
 msgid "title.team-invitations"
-msgstr "Приглашения - %s - Penpot"
+msgstr "Приглашения - %s - База"
 
 #: src/app/main/ui/dashboard/team.cljs:535
 msgid "title.team-members"
-msgstr "Участники - %s - Penpot"
+msgstr "Участники - %s - База"
 
 #: src/app/main/ui/dashboard/team.cljs:1296
 msgid "title.team-settings"
-msgstr "Настройки - %s - Penpot"
+msgstr "Настройки - %s - База"
 
 #: src/app/main/ui/dashboard/team.cljs:1249
 msgid "title.team-webhooks"
-msgstr "Вебхуки - %s - Penpot"
+msgstr "Вебхуки - %s - База"
 
 #: src/app/main/ui/viewer.cljs:423
 msgid "title.viewer"
-msgstr "%s - Режим просмотра - Penpot"
+msgstr "%s - Режим просмотра - База"
 
 #: src/app/main/ui/workspace.cljs:233
 msgid "title.workspace"
-msgstr "%s - Penpot"
+msgstr "%s - База"
 
 #: src/app/main/ui.cljs:138
 #, unused

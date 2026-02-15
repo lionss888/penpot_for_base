@@ -5,18 +5,39 @@
 - Docker и Docker Compose
 - 4+ vCPU, 8+ GB RAM (для production — см. [ПЛАН_РАЗВЁРТКИ_PENPOT_250_ПОЛЬЗОВАТЕЛЕЙ.md](../../ПЛАН_РАЗВЁРТКИ_PENPOT_250_ПОЛЬЗОВАТЕЛЕЙ.md))
 
-## Быстрый старт
+## Быстрый старт (образы penpotapp)
 
 ```bash
 cd ux/ui/penpot_for_base/docker
 cp .env.example .env
-# Отредактировать .env: BAZA_PUBLIC_URI, BAZA_SECRET_KEY
 docker compose -p baza -f docker-compose.baza.yaml up -d
 ```
 
-- **UI:** http://localhost:9001
-- **API Gateway:** http://localhost:9002
-- **MailCatcher (dev):** http://localhost:1080
+## Скрыть «penpot» в Docker UI
+
+```bash
+./retag-as-baza.sh
+# В .env: BAZA_IMAGE_PREFIX=baza
+docker compose -p baza -f docker-compose.baza.yaml up -d --force-recreate
+```
+
+## Полный white label (База в UI)
+
+Сборка frontend из форка с заменой текстов Penpot → База (~20 мин):
+
+```bash
+./build-baza-images.sh frontend
+# В .env: BAZA_IMAGE_PREFIX=baza
+docker compose -p baza -f docker-compose.baza.yaml up -d --force-recreate
+```
+
+При ошибке pnpm в Docker — попробуйте перезапустить Docker Desktop или собрать локально (pnpm, Clojure).
+
+---
+
+- **UI:** http://localhost:9011
+- **API Gateway:** http://localhost:9012
+- **MailCatcher (dev):** http://localhost:1081
 
 ## Production
 

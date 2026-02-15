@@ -30,7 +30,7 @@
            (st/emit! (ptk/event ::ev/event {::ev/name "explore-libraries-click"
                                             ::ev/origin "dashboard"
                                             :section "empty-placeholder-projects"}))
-           (dom/open-new-window "https://penpot.app/penpothub/libraries-templates")))
+           (dom/open-new-window "#")))
 
         on-import
         (mf/use-fn #(dom/click (mf/ref-val file-input)))]

@@ -881,19 +881,19 @@
                         :on-close on-close}
 
      [:> dropdown-menu-item* {:class (stl/css :submenu-item)
-                              :data-url "https://help.penpot.app"
+                              :data-url "#"
                               :on-click handle-click-url
                               :data-eventname "explore-help-center-click"}
       (tr "labels.help-center")]
 
      [:> dropdown-menu-item* {:class (stl/css :submenu-item)
-                              :data-url "https://penpot.app/learning-center"
+                              :data-url "#"
                               :on-click handle-click-url
                               :data-eventname "explore-learning-center-click"}
       (tr "labels.learning-center")]
 
      [:> dropdown-menu-item* {:class (stl/css :submenu-item)
-                              :data-url "https://penpot.app/penpothub"
+                              :data-url "#"
                               :on-click handle-click-url
                               :data-eventname "explore-penpot-hub-click"}
       (tr "labels.penpot-hub")]
@@ -923,13 +923,13 @@
                         :on-close on-close}
 
      [:> dropdown-menu-item* {:class (stl/css :submenu-item)
-                              :data-url "https://github.com/penpot/penpot"
+                              :data-url "#"
                               :on-click handle-click-url
                               :data-eventname "explore-github-repository-click"}
       (tr "labels.github-repo")]
 
      [:> dropdown-menu-item* {:class (stl/css :submenu-item)
-                              :data-url "https://community.penpot.app"
+                              :data-url "#"
                               :on-click handle-click-url
                               :data-eventname "explore-community-click"}
       (tr "labels.community")]]))
@@ -967,13 +967,13 @@
       (tr "labels.version-notes" (:base version))]
 
      [:> dropdown-menu-item* {:class (stl/css :submenu-item)
-                              :data-url "https://github.com/penpot/penpot/blob/develop/CHANGES.md"
+                              :data-url "#"
                               :on-click handle-click-url
                               :data-eventname "explore-changelog-click"}
       (tr "labels.penpot-changelog")]
 
      [:> dropdown-menu-item* {:class (stl/css :submenu-item)
-                              :data-url "https://penpot.app/terms"
+                              :data-url "#"
                               :on-click handle-click-url
                               :data-eventname "explore-terms-service-click"}
       (tr "auth.terms-of-service")]]))
@@ -1053,7 +1053,7 @@
         (mf/use-fn
          (fn []
            (st/emit! (ptk/event ::ev/event {::ev/name "explore-pricing-click" ::ev/origin "dashboard" :section "sidebar"}))
-           (dom/open-new-window "https://penpot.app/pricing")))]
+           (dom/open-new-window "#")))]
 
     [:*
      (when (contains? cf/flags :subscriptions)

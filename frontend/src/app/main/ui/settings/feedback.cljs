@@ -126,7 +126,7 @@
       [:p {:class (stl/css :field-text)} (tr "feedback.penpot.link")]
       [:& fm/input {:label ""
                     :name :error-href
-                    :placeholder "https://penpot.app/"
+                    :placeholder "https://"
                     :show-success? true}]
 
       (when report
@@ -144,7 +144,7 @@
 
 
      [:a {:class (stl/css :link)
-          :href "https://community.penpot.app"
+          :href "#"
           :target "_blank"}
       (tr "feedback.discourse-title")]
      [:p {:class (stl/css :field-text :bottom-margin)} (tr "feedback.discourse-subtitle1")]

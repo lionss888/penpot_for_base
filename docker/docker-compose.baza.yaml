@@ -1,12 +1,16 @@
 # База — Docker Compose
 # Оболочка с нейтральными именами сервисов (baza-*)
 # Проект: docker compose -p baza -f docker-compose.baza.yaml up -d
+#
+# Образы: BAZA_IMAGE_PREFIX=baza (по умолчанию) — свои образы с брендингом «База».
+# Для быстрого старта без сборки: BAZA_IMAGE_PREFIX=penpotapp в .env
+# Сборка своих образов: ./build-baza-images.sh frontend
 
 x-flags: &baza-flags
   PENPOT_FLAGS: disable-email-verification enable-smtp enable-prepl-server disable-secure-session-cookies
 
 x-uri: &baza-public-uri
-  PENPOT_PUBLIC_URI: ${BAZA_PUBLIC_URI:-http://localhost:9001}
+  PENPOT_PUBLIC_URI: ${BAZA_PUBLIC_URI:-http://localhost:9011}
 
 x-body-size: &baza-http-body-size
   PENPOT_HTTP_SERVER_MAX_BODY_SIZE: 31457280
@@ -24,11 +28,11 @@ volumes:
 
 services:
   baza-frontend:
-    image: "penpotapp/frontend:${BAZA_VERSION:-latest}"
+    image: "${BAZA_IMAGE_PREFIX:-penpotapp}/frontend:${BAZA_VERSION:-latest}"
     container_name: baza-frontend
     restart: always
     ports:
-      - "9001:8080"
+      - "9011:8080"
     volumes:
       - baza_assets:/opt/data/assets
       # White label: кастомные assets (пути для penpotapp/frontend — /var/www/app/)
@@ -41,9 +45,11 @@ services:
       - baza
     environment:
       << : [*baza-flags, *baza-http-body-size]
+      PENPOT_BACKEND_URI: http://baza-backend:6060
+      PENPOT_EXPORTER_URI: http://baza-exporter:6061
 
   baza-backend:
-    image: "penpotapp/backend:${BAZA_VERSION:-latest}"
+    image: "${BAZA_IMAGE_PREFIX:-penpotapp}/backend:${BAZA_VERSION:-latest}"
     container_name: baza-backend
     restart: always
     volumes:
@@ -74,7 +80,7 @@ services:
       PENPOT_SMTP_SSL: "false"
 
   baza-exporter:
-    image: "penpotapp/exporter:${BAZA_VERSION:-latest}"
+    image: "${BAZA_IMAGE_PREFIX:-penpotapp}/exporter:${BAZA_VERSION:-latest}"
     container_name: baza-exporter
     restart: always
     depends_on:
@@ -94,10 +100,10 @@ services:
     container_name: baza-api
     restart: always
     ports:
-      - "9002:3000"
+      - "9012:3000"
     environment:
       BAZA_BACKEND_URL: http://baza-frontend:8080
-      BAZA_PUBLIC_URI: ${BAZA_PUBLIC_URI:-http://localhost:9001}
+      BAZA_PUBLIC_URI: ${BAZA_PUBLIC_URI:-http://localhost:9011}
     depends_on:
       - baza-backend
     networks:
@@ -146,6 +152,6 @@ services:
     expose:
       - "1025"
     ports:
-      - "1080:1080"
+      - "1081:1080"
     networks:
       - baza

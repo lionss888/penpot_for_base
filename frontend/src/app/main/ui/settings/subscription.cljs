@@ -396,7 +396,7 @@
            (st/emit! (ev/event {::ev/name "explore-pricing-click"
                                 ::ev/origin "settings"
                                 :section "subscription"}))
-           (dom/open-new-window "https://penpot.app/pricing")))
+           (dom/open-new-window "#")))
 
         go-to-payments
         (mf/use-fn

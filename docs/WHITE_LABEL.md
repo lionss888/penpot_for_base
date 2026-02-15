@@ -33,9 +33,15 @@ npm run generate
 
 ---
 
-## 2. Замена текстов (требует форк)
+## 2. Замена текстов (выполнено в форке)
 
-Upstream не поддерживает i18n/white label из коробки. Для замены «Penpot» → «База» нужен форк.
+В форке penpot_for_base выполнена замена «Penpot» → «База»:
+- `frontend/translations/en.po`, `ru.po` — все msgstr
+- `frontend/src/app/main/ui/auth.cljs` — title логотипа
+- `frontend/src/app/main/ui/workspace/main_menu.cljs` — внешние ссылки → "#"
+- `frontend/src/app/main/ui/dashboard/sidebar.cljs` — ссылки Help, Community и т.д. → "#"
+- `frontend/src/app/main/ui/settings/feedback.cljs`, `subscription.cljs` — ссылки
+- `frontend/src/app/main/ui/workspace/sidebar/versions.cljs` — support-email → support@baza
 
 ### Ключевые места в upstream
 
