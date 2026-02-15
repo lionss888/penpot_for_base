@@ -1,0 +1,17 @@
+#cloud-config
+# Установка Docker и развёртывание База
+# Использовать с user_data в EC2/cloud-init
+
+package_update: true
+package_upgrade: true
+packages:
+  - docker.io
+  - docker-compose
+  - nginx
+  - certbot
+  - python3-certbot-nginx
+
+runcmd:
+  - systemctl enable docker
+  - systemctl start docker
+  - usermod -aG docker ubuntu

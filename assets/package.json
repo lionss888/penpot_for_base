@@ -1,0 +1,11 @@
+{
+  "name": "baza-assets",
+  "private": true,
+  "scripts": {
+    "generate": "node generate-assets.mjs"
+  },
+  "devDependencies": {
+    "sharp": "^0.33.0",
+    "to-ico": "^1.1.5"
+  }
+}

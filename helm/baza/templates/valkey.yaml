@@ -1,0 +1,40 @@
+{{- if .Values.valkey.enabled }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: baza-cache
+  labels:
+    app: baza-cache
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: baza-cache
+  template:
+    metadata:
+      labels:
+        app: baza-cache
+    spec:
+      containers:
+        - name: valkey
+          image: valkey/valkey:8.1
+          args:
+            - --maxmemory
+            - {{ .Values.valkey.maxmemory | quote }}
+            - --maxmemory-policy
+            - volatile-lfu
+          ports:
+            - containerPort: 6379
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: baza-cache
+spec:
+  selector:
+    app: baza-cache
+  ports:
+    - port: 6379
+      targetPort: 6379
+  type: ClusterIP
+{{- end }}

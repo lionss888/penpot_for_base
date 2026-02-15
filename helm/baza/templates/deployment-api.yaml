@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: baza-api
+  labels:
+    app: baza-api
+spec:
+  replicas: {{ .Values.replicaCount.api }}
+  selector:
+    matchLabels:
+      app: baza-api
+  template:
+    metadata:
+      labels:
+        app: baza-api
+    spec:
+      containers:
+        - name: api
+          image: "{{ .Values.image.api.repository }}:{{ .Values.image.api.tag }}"
+          imagePullPolicy: {{ .Values.image.api.pullPolicy }}
+          ports:
+            - containerPort: 3000
+          env:
+            - name: BAZA_BACKEND_URL
+              value: "http://baza-frontend:8080"
+            - name: BAZA_PUBLIC_URI
+              value: {{ .Values.baza.publicUri | quote }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: baza-api
+spec:
+  selector:
+    app: baza-api
+  ports:
+    - port: 3000
+      targetPort: 3000
+  type: ClusterIP

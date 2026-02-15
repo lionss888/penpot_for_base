@@ -8,10 +8,12 @@
 penpot_for_base/
 ├── docker/          # Docker-обёртка с именем baza
 ├── baza-api/        # API Gateway — обёртка над ядром
-├── assets/          # Кастомные визуальные элементы
+├── assets/          # Кастомные визуальные элементы (logo, favicon, og-image)
 ├── overrides/       # Переопределения (volume-mount)
 ├── i18n/            # Локализация
-└── CHANGELOG.md
+├── terraform/       # Облачное развёртывание
+├── helm/            # Helm chart для Kubernetes
+└── docs/            # Документация
 ```
 
 ## Быстрый старт
@@ -28,5 +30,8 @@ docker compose -p baza -f docker-compose.baza.yaml up -d
 - [Инструкция по развёртыванию](docs/DEPLOYMENT.md)
 - [Docker](docker/README.md)
 - [API База](baza-api/README.md)
+- [White Label](docs/WHITE_LABEL.md)
+- [Terraform](terraform/README.md)
+- [Helm](helm/baza/README.md)
 - [Онбординг команды](docs/ONBOARDING.md)
 - [Стратегия репозитория](docs/REPOSITORY_STRATEGY.md)

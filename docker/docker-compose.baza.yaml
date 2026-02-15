@@ -31,9 +31,9 @@ services:
       - "9001:8080"
     volumes:
       - baza_assets:/opt/data/assets
-      # Volume-mount для кастомных assets (раскомментировать при наличии путей в образе):
-      # - ../assets/logo.svg:/opt/penpot/frontend/static/logo.svg:ro
-      # - ../assets/favicon.ico:/opt/penpot/frontend/static/favicon.ico:ro
+      # White label: кастомные assets (пути для penpotapp/frontend — /var/www/app/)
+      - ../assets/logo.svg:/var/www/app/logo.svg:ro
+      - ../assets/favicon.ico:/var/www/app/favicon.ico:ro
     depends_on:
       - baza-backend
       - baza-exporter

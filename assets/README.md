@@ -2,16 +2,23 @@
 
 - `logo.svg` — логотип (светлая тема)
 - `logo-dark.svg` — логотип (тёмная тема)
-- `favicon.svg` — иконка для вкладки
+- `favicon.svg` — иконка SVG
+- `favicon.ico` — иконка ICO (генерируется)
+- `favicon-32.png`, `favicon-16.png` — PNG-варианты
+- `og-image.png` — Open Graph 1200x630 (генерируется)
+
+## Генерация
+
+```bash
+npm install
+npm run generate
+```
 
 ## Volume-mount в Docker
 
-При использовании форка с известными путями в образе, раскомментировать в `docker-compose.baza.yaml`:
+В `docker/docker-compose.baza.yaml` настроен mount для penpotapp/frontend:
 
 ```yaml
-volumes:
-  - ../assets/logo.svg:/opt/penpot/frontend/static/logo.svg:ro
-  - ../assets/favicon.svg:/opt/penpot/frontend/static/favicon.svg:ro
+- ../assets/logo.svg:/var/www/app/logo.svg:ro
+- ../assets/favicon.ico:/var/www/app/favicon.ico:ro
 ```
-
-Для favicon.ico — сконвертировать favicon.svg через [favicon.io](https://favicon.io) или аналогичный инструмент.
